@@ -1,0 +1,18 @@
+{
+  "name": "folkrobot2",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "brunch": "^2.3.2",
+    "coffee-script-brunch": "^2.0.0",
+    "css-brunch": "^2.0.0",
+    "jade-brunch": "^2.0.0",
+    "javascript-brunch": "^2.0.0"
+  },
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

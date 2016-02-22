@@ -1,0 +1,15 @@
+{
+  "name": "folkrobot2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "jquery-ui": "~1.11.4",
+    "jquery": "~2.2.0"
+  }
+}
