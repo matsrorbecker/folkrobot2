@@ -10,6 +10,7 @@ module.exports = class App
         
         @textCollection.fetch
             success: () =>
+                @appView.calculateTotals()
                 @appView.render()
             error: () ->
                 throw new Error 'Could not fetch data from server.'
