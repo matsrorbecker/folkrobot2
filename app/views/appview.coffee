@@ -8,39 +8,11 @@ module.exports = class AppView extends Backbone.View
 
     events:
         'submit form': 'validateChoice'
-        'focus input': 'clearForm'
-
-    calculateTotals: =>
-        population = 0
-        populationChange = 0
-        largestIncrease = 0
-        largestDecrease = 0
-        winners = 0
-        losers = 0
-
-        for model in @collection.toJSON()
-            population += model.total
-            populationChange += model.change
-            if model.change > 0
-                winners++
-                if model.changeInPercent > largestIncrease
-                    largestIncrease = model.changeInPercent
-            if model.change < 0
-                losers++
-                if model.changeInPercent < largestDecrease
-                    largestDecrease = model.changeInPercent
-        
-        averageChange = parseFloat ((populationChange / (population - populationChange)) * 100).toFixed(1)
-
-        @totals =
-            largestIncrease: largestIncrease
-            largestDecrease: largestDecrease
-            winners: winners
-            losers: losers
-            averageChange: averageChange
+        'focus #municipality': 'clearForm'
 
     render: =>
         this.$el.html @template
+        $('#municipality').autocomplete { source: app.municipalities }
         this
 
     validateChoice: (event) => 
@@ -54,7 +26,7 @@ module.exports = class AppView extends Backbone.View
         $('#text').empty()
         @resetForm()
         if textModel
-            textView = new TextView { model: textModel, totals: @totals }
+            textView = new TextView { model: textModel, totals: app.totals }
             $('#text').append textView.render().el
         else
             $('#text').append "<p>Det finns ingen kommun som heter så. Försök igen.</p>"
