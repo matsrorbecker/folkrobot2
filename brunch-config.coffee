@@ -4,7 +4,7 @@ module.exports = config:
             defaultExtension: 'coffee'
             joinTo:
                 'javascripts/app.js': /^app/
-                'javascripts/vendor.js': /^bower_components/
+                'javascripts/vendor.js': /^(vendor|bower_components)/
 
         stylesheets: 
             joinTo: 
@@ -14,6 +14,9 @@ module.exports = config:
             defaultExtension: 'jade'
             joinTo:
                 'javascripts/templates.js'
+
+    paths:
+        watched: ['app']
 
     plugins:
         coffeelint:
