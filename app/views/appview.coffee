@@ -17,19 +17,24 @@ module.exports = class AppView extends Backbone.View
 
     validateChoice: (event) => 
         event.preventDefault()
-        choice = $('#municipality').val().toLowerCase().trim()
-        textModel = @collection.find (model) ->
-            model.get('municipality').toLowerCase() == choice
-        @renderText textModel
+        choice = $('#municipality').val()
+        if choice.toLowerCase().trim() in app.municipalities
+            textModel = @collection.find (model) ->
+                model.get('municipality').toLowerCase() == choice
+            @renderText textModel
+        else
+            @renderError "Det finns ingen kommun som heter #{choice}."
 
     renderText: (textModel) =>
         $('#text').empty()
         @resetForm()
-        if textModel
-            textView = new TextView { model: textModel, totals: app.totals }
-            $('#text').append textView.render().el
-        else
-            $('#text').append "<p>Det finns ingen kommun som heter så. Försök igen.</p>"
+        textView = new TextView { model: textModel, totals: app.totals }
+        $('#text').append textView.render().el
+
+    renderError: (message) =>
+        $('#text').empty()
+        @resetForm()
+        $('#text').append "<p>#{message}</p>"
 
     clearForm: ->
         $('#municipality').val ''

@@ -20,7 +20,7 @@ module.exports = class App
     initializeApp: =>
         @municipalities = []
         @textCollection.forEach (model) =>
-            @municipalities.push model.get 'municipality'
+            @municipalities.push model.get('municipality').toLowerCase()
         @calculateTotals()
         @appView.render()
 
