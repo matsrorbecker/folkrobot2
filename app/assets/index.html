@@ -3,15 +3,21 @@
   <head>
     <title>---=== EN LITEN ROBOT ===---</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/app.css">
   </head>
   <body>
-  <div id="container">
-    <div id="app"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-8">
+        <div id="app"></div>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
   </div>
     <script src="javascripts/vendor.js"></script>
-    <script src="javascripts/templates.js"></script>
     <script src="javascripts/app.js"></script>
-    <script>require('init');</script>
   </body>
 </html>
