@@ -19,8 +19,11 @@ module.exports = class App
 
     initializeApp: =>
         @municipalities = []
+        @autocompleteList = []
         @textCollection.forEach (model) =>
-            @municipalities.push model.get('municipality').toLowerCase()
+            municipality = model.get 'municipality'
+            @autocompleteList.push municipality
+            @municipalities.push municipality.toLowerCase()
         @calculateTotals()
         @appView.render()
 

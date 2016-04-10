@@ -12,13 +12,13 @@ module.exports = class AppView extends Backbone.View
 
     render: =>
         this.$el.html @template
-        $('#municipality').autocomplete { source: app.municipalities }
+        $('#municipality').autocomplete { source: app.autocompleteList }
         this
 
     validateChoice: (event) => 
         event.preventDefault()
-        choice = $('#municipality').val()
-        if choice.toLowerCase().trim() in app.municipalities
+        choice = $('#municipality').val().toLowerCase().trim()
+        if choice in app.municipalities
             textModel = @collection.find (model) ->
                 model.get('municipality').toLowerCase() == choice
             @renderText textModel
